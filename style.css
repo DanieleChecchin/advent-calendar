@@ -1,23 +1,137 @@
 body {
     background-color: #100645;
+    color: white;
+    font-family: 'Livvic', sans-serif;
 }
 
 header {
-    background-image: url("img/header-bg.png");
-    background-color: #2e28ec;
-    height: 400px;
-    background-repeat: no-repeat;
-    background-position-y: 120px;
-    background-size: cover;
+    height: 280px;
+    background:
+        url(images/header-bg.png) center 2px / cover no-repeat,
+        #2D28EB;
+    border-radius: 0px 0px 40px 40px;
 }
 
-header img {
+#calendar {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.box {
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: calc((100% / 8) - 10px);
+    background-color: #2E6753;
+    border-radius: 30px;
+}
+
+.box.opened {
+    background-color: transparent;
+    cursor: default;
+}
+
+.box.opened:hover {
+    background-color: transparent;
+    color: white;
+    cursor: default;
+}
+
+.box:hover {
+    background-color: gray;
+    color: #2E6753;
+}
+
+.box.opened .icon {
+    opacity: 0.5;
+}
+
+.last-box {
+    background-color: #D5D6F5;
+    color: #2E6753;
+    flex-grow: 1;
+    margin-top: 10px;
+}
+
+.box img {
+    height: 40px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 420px;
-    object-fit: cover;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-h1 {
-    font-size: 50px;
-    line-height: 45px;
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #e78ab7;
+    color: black;
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+    header {
+        background:
+            url(../images/header-bg.png) center 10px / cover no-repeat,
+            #2D28EB;
+    }
+}
+
+@media (max-width: 850px) {
+    header {
+        background:
+            url(../images/header-bg.png) center 85px / cover no-repeat,
+            #2D28EB;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        background:
+            url(../images/header-bg.png) center 85px / cover no-repeat,
+            #2D28EB;
+    }
+
+    .box {
+        width: calc((100% / 4) - 10px);
+    }
 }
